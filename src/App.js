@@ -5,9 +5,10 @@ import Sidebar from './Sidebar';
 import Pusher from 'pusher-js';
 import axios from './axios.js';
 import Login from './Login';
+import { useStateValue } from './StateProvider';
 
 function App() {
-    const [user, setUser] = useState(null);
+    const [{ user }] = useStateValue();
     const [messages, setMessages] = useState([]);
     useEffect(() => {
         axios.get('/api/messages/sync').then((response) => {
