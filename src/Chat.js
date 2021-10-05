@@ -9,8 +9,10 @@ import {
 import React, { useState } from 'react';
 import './Chat.css';
 import axios from './axios';
+import useSeed from './useSeed';
 
 function Chat({ messages }) {
+    const seed = useSeed();
     const [input, setInput] = useState('');
     const sendMessage = async (e) => {
         e.preventDefault();
@@ -27,7 +29,9 @@ function Chat({ messages }) {
     return (
         <div className="chat">
             <div className="chat__header">
-                <Avatar />
+                <Avatar
+                    src={`https://avatars.dicebear.com/api/human/${seed}.svg`}
+                />
                 <div className="chat__headerInfo">
                     <h3>Room name</h3>
                     <p>Last seen at...</p>
